@@ -1,0 +1,27 @@
+<doctype html>
+<title>Delete Data - Flask Database</title>
+<h2>Delete Data</h2>
+
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+    <dl>
+        {{ render_field(form.project_name) }}
+        {{ render_field(form.collection_type) }}
+        {{ render_field(form.project_date) }}
+
+        {{ render_field(form.begin_date) }}
+        {{ render_field(form.begin_time) }}
+        {{ render_field(form.designator) }}
+        {{ render_field(form.loc_common) }}
+        {{ render_field(form.loc_region) }}
+        {{ render_field(form.loc_detailed) }}
+        {{ render_field(form.collect_common) }}
+        {{ render_field(form.altitude) }}
+        {{ render_field(form.signal_type) }}
+        {{ render_field(form.architecture) }}
+        {{ render_field(form.band_no) }}
+        {{ render_field(form.freq_bands) }}
+        {{ render_field(form.antenna_loc) }}
+    </dl>
+    <p><input type=submit value=Delete>
+</form>
