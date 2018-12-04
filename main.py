@@ -3,6 +3,7 @@ sys.path.append('.')
 
 
 from flask import request, render_template, flash, redirect
+# from werkzeug.utils import *
 from app import *
 from tables import *
 from forms import *
@@ -36,7 +37,7 @@ def search_results(search):
             qry = db.session.query(CollectionDetails).filter(
                 CollectionDetails.begin_date.contains(search_string))
             results = qry.all()
-        elif search.data['select'] == 'LocationCommonName':
+        elif search.data['select'] == 'Location Common Name':
             qry = db.session.query(CollectionDetails).filter(
                 CollectionDetails.loc_common.contains(search_string))
             results = qry.all()
@@ -55,6 +56,11 @@ def search_results(search):
         table = Results(results)
         table.border = True
         return render_template('results.html', table=table)
+
+
+# def allowed_file(filename):
+#     return '.' in filename and \
+#            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/new_data', methods=['GET', 'POST'])
@@ -101,10 +107,38 @@ def save_changes(details, form, new=False):
     details.band_no = form.band_no.data
     details.freq_bands = form.freq_bands.data
     details.antenna_loc = form.antenna_loc.data
+    details.size_gb = form.size_gb.data
+    details.total_files_no = form.total_files_no.data
+    details.where_collected_to = form.where_collected_to.data
+    details.transfer_drive = form.transfer_drive.data
+    details.backup_drive = form.backup_drive.data
+    details.logistics = form.logistics.data
+    details.notes = form.notes.data
+    details.gps = form.gps.data
+    details.documentation = form.documentation.data
+
+    # details.file = form.file.data
 
     if new:
         # Add the new data to the database
         db.session.add(details)
+        #
+        # key = details.begin_date + details.designator + '_' + details.loc_common + '_' + details.collect_common + '_' + details.signal_type + '_' + details.band_no
+        # if 'file' not in request.files:
+        #     flash('No file part')
+        #     return 'no'
+        # file = request.files['file']
+        # # if user does not select file
+        # if file.filename == '':
+        #     flash('No selected file')
+        #     return redirect(request.url)
+        # if file and allowed_file(file.filename):
+        #     # filetype = file.filename.rsplit('.', 1)[1].lower()
+        #     filename = secure_filename(file.filename)
+        #     dirname = os.path.join(app.config['UPLOAD_FOLDER'], key)
+        #     os.makedirs(dirname)
+        #     file.save(os.path.join(dirname, filename))
+        #     # return redirect(url_for('uploaded_file', filename=filename))
 
     # commit the data to the database
     db.session.commit()
@@ -143,7 +177,7 @@ def delete(id):
             db.session.delete(details)
             db.session.commit()
 
-            flash('Album deleted successfully!')
+            flash('Data deleted successfully!')
             return redirect('/')
         return render_template('delete_data.html', form=form)
     else:

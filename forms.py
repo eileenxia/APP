@@ -37,6 +37,17 @@ class DetailForm(Form):
     band_no = SelectField('Band Number', choices=band_nos)
     freq_bands = StringField('Frequency Bands')
     antenna_loc = StringField('Antenna Location/Orientation')
+    size_gb = StringField('Collection Size (GB)')
+    total_files_no = StringField('Total Number of Data/Metadata Files')
+    where_collected_to = StringField('Drive/Computer Collected To')
+    transfer_drive = StringField('Transfer Drive')
+    backup_drive = StringField('In-Field Backup Drive')
+    logistics = StringField('Logistics')
+    notes = StringField('Notes')
+    gps = StringField('Collection GPS File') #links
+    documentation = StringField('Collection Documentation') #links
 
-    def generateID(self):
-        return self.begin_date+self.designator+'_'+self.loc_common+'_'+self.collect_common+'_'+self.signal_type+'_'+self.band_no
+    #file = FileField()
+
+    # def generateID(self):
+    #     return self.begin_date+self.designator+'_'+self.loc_common+'_'+self.collect_common+'_'+self.signal_type+'_'+self.band_no

@@ -20,6 +20,17 @@ class Results(Table):
     band_no = Col('Band Number')
     freq_bands = Col('Frequency Bands')
     antenna_loc = Col('Antenna Location/Orientation')
+    size_gb = Col('Collection Size (GB)')
+    total_files_no = Col('Total Number of Data/Metadata Files')
+    where_collected_to = Col('Drive/Computer Collected To')
+    transfer_drive = Col('Transfer Drive')
+    backup_drive = Col('In-Field Backup Drive')
+    logistics = Col('Logistics')
+    notes = Col('Notes')
+    gps = Col('Collection GPS File')  # links
+    documentation = Col('Collection Documentation')  # links
+
+    #file = Col('Data File')
 
     edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
     delete = LinkCol('Delete', 'delete', url_kwargs=dict(id='id'))
