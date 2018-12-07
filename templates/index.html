@@ -1,6 +1,15 @@
 <doctype html>
 <head>
     <title>Flask Database</title>
+<style>
+  dt {
+    line-height: 1.6;
+}
+  label{
+    display: inline-block;
+    width: 5em;
+}
+</style>
 </head>
 
 <h2>Flask Database</h2>
@@ -22,7 +31,6 @@
 <form method=post>
   <dl>
     {{ render_field(form.select) }}
-    <p>
     {{ render_field(form.search) }}
   </dl>
   <p><input type=submit value=Search>

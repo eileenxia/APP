@@ -1,3 +1,6 @@
+#tables.py
+#database table
+
 from flask_table import Table, Col, LinkCol
 
 class Results(Table):
@@ -6,7 +9,6 @@ class Results(Table):
     project_name = Col('Project Name')
     collection_type = Col('Collection Type')
     project_date = Col('Project Date')
-
     begin_date = Col('Date Collection Begins')
     begin_time = Col('Time Collection Begins')
     designator = Col('Collection Designator')
@@ -30,17 +32,5 @@ class Results(Table):
     gps = Col('Collection GPS File')  # links
     documentation = Col('Collection Documentation')  # links
 
-    #file = Col('Data File')
-
     edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
     delete = LinkCol('Delete', 'delete', url_kwargs=dict(id='id'))
-
-
-
- #   id = Col('Id', show=False)
-#    artist = Col('Artist')
-#    title = Col('Title')
-#    release_date = Col('Release Date')
-#    publisher = Col('Publisher')
- #   media_type = Col('Media')
- #   edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))

@@ -6,8 +6,8 @@ class DataSearchForm(Form):
     choices = [('Date', 'Date'),
                ('Location Common Name', 'Location Common Name')
                ]
-    select = SelectField('Search for music:', choices=choices)
-    search = StringField('')
+    select = SelectField('Search by:', choices=choices)
+    search = StringField('Find:')
 
 
 class DetailForm(Form):
@@ -23,7 +23,6 @@ class DetailForm(Form):
     project_name = StringField('Project Name')
     collection_type = SelectField('Collection Type', choices=collection_types)
     project_date = StringField('Project Date')
-
     begin_date = StringField('Date Collection Begins')
     begin_time = StringField('Time Collection Begins')
     designator = SelectField('Collection Designator', choices=designators)

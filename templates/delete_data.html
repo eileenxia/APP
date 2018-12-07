@@ -1,6 +1,26 @@
 <doctype html>
-<title>Delete Data - Flask Database</title>
-<h2>Delete Data</h2>
+<head>
+    <title>Delete Data - Flask Database</title>
+<style>
+  dt {
+    line-height: 1.4;
+}
+dt, dd {
+  background-color: white;
+}
+
+dt:nth-child(2n+1), dt:nth-child(2n+1) + dd {
+  background-color: #eee;
+}
+  label{
+    display: inline-block;
+    width: 15em;
+}
+form {
+display: inline-block;
+}
+</style>
+</head><h2>Delete Data</h2>
 
 {% from "_formhelpers.html" import render_field %}
 <form method=post>
@@ -8,7 +28,6 @@
         {{ render_field(form.project_name) }}
         {{ render_field(form.collection_type) }}
         {{ render_field(form.project_date) }}
-
         {{ render_field(form.begin_date) }}
         {{ render_field(form.begin_time) }}
         {{ render_field(form.designator) }}

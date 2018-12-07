@@ -28,11 +28,6 @@ def search_results(search):
     search_string = search.data['search']
 
     if search_string:
-        # if search.data['select'] == 'Artist':
-        #     qry = db.session.query(Album, Artist).filter(
-        #         Artist.id==Album.artist_id).filter(
-        #             Artist.name.contains(search_string))
-        #     results = [item[0] for item in qry.all()]
         if search.data['select'] == 'Date':
             qry = db.session.query(CollectionDetails).filter(
                 CollectionDetails.begin_date.contains(search_string))
@@ -65,9 +60,7 @@ def search_results(search):
 
 @app.route('/new_data', methods=['GET', 'POST'])
 def new_data():
-    """
-    Add a new data
-    """
+    #add new data
     form = DetailForm(request.form)
 
     if request.method == 'POST' and form.validate():
@@ -80,13 +73,8 @@ def new_data():
     return render_template('new_data.html', form=form)
 
 def save_changes(details, form, new=False):
-    """
-    Save the changes to the database
-    """
-    # Get data from form and assign it to the correct attributes
-    # of the SQLAlchemy table object
-    # artist = Artist()
-    # artist.name = form.artist.data
+    #save the changes to the database
+    # Get data from form and assign it to the correct attributes of the SQLAlchemy table object
 
     #details.generateID()
 
@@ -143,6 +131,7 @@ def save_changes(details, form, new=False):
     # commit the data to the database
     db.session.commit()
 
+
 @app.route('/item/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     qry = db.session.query(CollectionDetails).filter(
@@ -162,10 +151,8 @@ def edit(id):
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
-    """
-    Delete the item in the database that matches the specified
-    id in the URL
-    """
+    #Delete the item in the database that matches the specified id in the URL
+
     qry = db.session.query(CollectionDetails).filter(
         CollectionDetails.id==id)
     details = qry.first()

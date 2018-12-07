@@ -1,10 +1,13 @@
 # app.py
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+#from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mgmtapp.db'
 app.secret_key = "flask rocks!"
+
+#Bootstrap(app)
 
 # UPLOAD_FOLDER = '/Users/eileenxia/dbldb/uploaded_files'
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html'])
@@ -21,7 +24,6 @@ class CollectionDetails(db.Model):
     project_name = db.Column(db.String)
     collection_type = db.Column(db.String)
     project_date = db.Column(db.String)
-
     begin_date = db.Column(db.String)
     begin_time = db.Column(db.String)
     designator = db.Column(db.String)
@@ -48,9 +50,3 @@ class CollectionDetails(db.Model):
 
    # file = db.Column(db.String)
 
-#
-# app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mgmtapp.db'
-# app.secret_key = "flask rocks!"
-#
-# db = SQLAlchemy(app)
