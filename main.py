@@ -28,7 +28,11 @@ def search_results(search):
     search_string = search.data['search']
 
     if search_string:
-        if search.data['select'] == 'Date':
+        if search.data['select'] == 'Project Name':
+            qry = db.session.query(CollectionDetails).filter(
+                CollectionDetails.project_name.contains(search_string))
+            results = qry.all()
+        elif search.data['select'] == 'Date':
             qry = db.session.query(CollectionDetails).filter(
                 CollectionDetails.begin_date.contains(search_string))
             results = qry.all()

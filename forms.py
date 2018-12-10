@@ -3,7 +3,8 @@
 from wtforms import *
 
 class DataSearchForm(Form):
-    choices = [('Date', 'Date'),
+    choices = [('Project Name', 'Project Name'),
+               ('Date', 'Date'),
                ('Location Common Name', 'Location Common Name')
                ]
     select = SelectField('Search by:', choices=choices)
@@ -11,7 +12,7 @@ class DataSearchForm(Form):
 
 
 class DetailForm(Form):
-    collection_types = [('std', 'standard'), ('exp', 'experimental')]
+    collection_types = [('std', 'standard'), ('exp', 'experimental'), ('op', 'operational')]
     designators = [('a', 'a'), ('b', 'b'), ('c', 'c')]
     loc_regions = [('USA', 'USA'), ('Japan', 'Japan')]
     collect_commons = [('Fixed', 'Fixed'), ('Drive', 'Drive'), ('Low', 'Low'), ('Nom', 'Nom'), ('Walk', 'Walk'), ('Other', 'Other')]
